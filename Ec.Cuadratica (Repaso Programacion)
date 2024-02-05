@@ -1,0 +1,69 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+ 
+ float unica(int a, int b, int c);
+ float multiple(int a, int b, int c);
+float imaginaria (int a, int b, int c); 
+
+int main()
+{
+    cout<<"SOLUCIONADOR DE ECUACION CUADRATICA"<<endl<<"Ax²+Bx+C"<<endl<<"Donde A, B y C son numerales, donde A es distinto de 0"<<endl<<"pulse enter para proseguir"<<endl;
+    
+system("pause");
+ int a, b, c;
+   float disc;
+   do{
+    cout<<"Ingresa un entero para A: "<<endl; cin>>a;
+    
+    if (a==0){system("clear"); cout <<"NO ES UNA ECUACION CUADRÁTICA, FALTA EL TERMINO CUADRATICO, REINGRESE EL VALOR"<<endl; }  }while (a==0);
+    cout<<"Ingresa un entero para B: "<<endl; cin>>b;
+    cout<<"Ingresa un entero para C: "<<endl; cin>>c;
+    
+    system ("clear");
+    
+    disc=((b*b)-(4*a*c));
+    if (disc>0) multiple(a,b,c);
+    else if (disc==0) unica(a,b,c);
+    else if (disc<0) imaginaria(a,b,c);
+}
+
+ float unica(int a, int b, int c){
+     float sol, disc;
+     cout<<"LA ECUACION CON LAS VARIABLES A="<<a<<"B="<<b<<"C="<<c<<" TIENE UNA SOLA SOLUCION QUE ES:"<<endl;
+     disc=((b*b)-(4*a*c));
+
+     sol = ((-1)*b)/(2*a);
+     cout<<"X = "<<sol<<endl;
+     return 0;
+ }
+ 
+ float multiple(int a, int b, int c){
+       float sol1, sol2, disc;
+    cout<<"LA ECUACION CON LAS VARIABLES A="<<a<<"B="<<b<<"C="<<c<<" TIENE 2 SOLUCIONES REALES QUE SON:"<<endl;
+     disc=((b*b)-(4*a*c));
+     
+       sol1 = ( ((-1)*b ) + sqrt(disc) ) /(2*a);
+        sol2 = ( ((-1)*b ) - sqrt(disc) ) /(2*a);
+
+     cout<<"X1 = "<<sol1<<endl;
+     cout<<"X2 = "<<sol2<<endl;
+
+     return 0;
+ }
+ 
+float imaginaria (int a, int b, int c){
+     float sol1, sol2, disc;
+        cout<<"LA ECUACION CON LAS VARIABLES A="<<a<<"B="<<b<<"C="<<c<<" TIENE 2 SOLUCIONES IMAGINARIAS QUE SON:"<<endl;
+     disc=((b*b)-(4*a*c));
+     
+       sol1 = ( ((-1)*b ) ) /(2*a);
+        sol2 = ( ((-1)*b) ) /(2*a);
+
+     cout<<"X1 = "<<sol1<<" + ("<<sqrt(disc)<< "/2) i"<< endl;
+     cout<<"X2 = "<<sol2<<" - ("<<sqrt(disc)<< "/2) i"<<endl;
+    
+} 
+ 
