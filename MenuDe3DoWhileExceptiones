@@ -18,14 +18,14 @@ cout<<"****************************************************************"<<endl;
   do { try {cin >> a; if (cin.fail()) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
     cout<<"Ingrese el exponente"<<endl;
-    do { try {cin >> b; if (cin.fail()) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
+    do { try {cin >> b; if (cin.fail()||b<0||(b/int(b)!=1)) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
         cout<<"Su resultado es de: "<< potencia(a,b) <<endl;
         cout<<"INGRESE CUALQUIER COSA PARA CONTINUAR"<<endl;
         cin>>A;
         system("clear");  }       break;
     case 2:{cout<<"Ingrese el numero al que obtendra su factorial"<<endl;
-    do { try {cin >> a; if (cin.fail()) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
+    do { try {cin >> a; if (cin.fail()||a<0||(a/int(b)!=1)) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
         cout<<"Su resultado es de: "<< factorial(a) <<endl;
         cout<<"INGRESE CUALQUIER COSA PARA CONTINUAR"<<endl;
@@ -36,7 +36,7 @@ cout<<"****************************************************************"<<endl;
      do { try {cin >> a; if (cin.fail()) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
     cout<<"Ingrese el valor de n"<<endl;
-    do { try {cin >> b; if (cin.fail()) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
+    do { try {cin >> b; if (cin.fail()||b<0||(b/int(b)!=1)) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
         cout<<"Su resultado en la secuencia es de: "<< suecia(a,b) <<endl;
         cout<<"INGRESE CUALQUIER COSA PARA CONTINUAR"<<endl;
