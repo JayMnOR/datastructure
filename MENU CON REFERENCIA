@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 
-float potencia(float a, float b, float &r);
+void potencia(float a, float b, float &r);
 int factorial(int a);
 float suecia(float x, float n);
 
 int main()
-{int n, ver; float a, b;
+{int n, ver; float a, b; float r;
 string A; //porque online GDB no corre system("pause")
 do{cout<<"******MENU DE OPERACIONES******\n";
 cout<<"1. Potencia \n 2. Factorial \n 3. Secuencia\n 0. Salir"<<endl;
@@ -20,8 +20,7 @@ cout<<"****************************************************************"<<endl;
     cout<<"Ingrese el exponente"<<endl;
     do { try {cin >> b; if (cin.fail()||b<0||(b/int(b)!=1)) {    throw "";} ver = 0; } catch (...) { cin.clear(); while (cin.get()!='\n'){} cout<<"INGRESE UN VALOR VALIDO"<<endl;ver = 100;}
     } while (ver == 100);
-    float r=1;
-    r=potencia(a, b, r);
+    potencia(a, b, r);
         cout<<"Su resultado es de: "<< r <<endl;
         cout<<"INGRESE CUALQUIER COSA PARA CONTINUAR"<<endl;
         cin>>A;
@@ -51,9 +50,8 @@ cout<<"****************************************************************"<<endl;
 }}while(ver==0);
 return 0; }
 
-float potencia(float a, float b, float &r){r=1;
+void potencia(float a, float b, float &r){r=1;
  for (int i=0; i<b; i++)r*=a;
-    return r;
 }
 int factorial(int a){ float res=1;
     for(int i=1; i<=a;i++)res*=i;
@@ -61,6 +59,6 @@ int factorial(int a){ float res=1;
 }
 float suecia(float x, float n){
     float res=0; float r=1;
-    for (int i=0; i<n; i++)  {res+=(potencia(x, i, r))/factorial(i);}
+    for (int i=0; i<n; i++) {potencia(x, i, r); res+=(r/factorial(i));}
     return res;
 }
