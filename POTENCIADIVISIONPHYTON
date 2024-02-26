@@ -1,0 +1,51 @@
+def pot(a, b):
+    if (b==0):
+        return 1
+    else:
+        return(a*pot(a, b-1))
+def div(a, b, res):
+    if res >= 3:
+        return 0
+    else:
+        return a / b + div(float(a/b)-int(a/b), b, res + 1)
+x=0
+while(x<1 or x>2):
+     try:
+         print("1.DIVIDIR ENTEROS CON UN RESULTADO DE 3 DECIMALES")
+         print("2.POTENCIA DE ENTEROS")
+         x=int(input("Elige una de las opciones del menú:  "))
+     except(ValueError):
+         print("INGRESA UN VALOR VALIDO")
+if x==1:
+    while(x==1):
+      try:
+          a=int(input("Ingresa el numerador: "))
+          x=10
+      except(ValueError):
+          print("INGRESA UN VALOR VALIDO")
+          x=1
+    while(x==10 or b==0):
+      try:
+          b=int(input("Ingresa el denominador: "))
+          x=1
+      except(ValueError):
+          print("INGRESA UN VALOR VALIDO")
+          x=10
+    res=0
+    print("El resultado de la division es ", div(a, b, res))
+else:
+    while(x==2):
+      try:
+          a=int(input("Ingresa la base: "))
+          x=10
+      except(ValueError):
+          print("INGRESA UN VALOR VALIDO")
+          x=2
+    while(x==10):
+      try:
+          b=int(input("Ingresa el exponente: "))
+          x=1
+      except(ValueError):
+          print("INGRESA UN VALOR VALIDO")
+          x=10
+    print("El resultado de la operacion es ", pot(a, b))
