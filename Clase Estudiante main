@@ -1,0 +1,24 @@
+#include <iostream>
+#include "Estudiante.h"
+#include<string>
+using namespace std;
+
+int main() {
+	Estudiante Alumno;
+	string n, m;
+	int e;
+	float c;
+	cout << "Ingresar el nombre del alumno: "; getline(cin, n); Alumno.set_nombre(n);
+	cout << "Ingresar la edad del alumno: "; cin >> e; Alumno.set_edad(e);
+	cin.ignore();
+	cout << "Ingresar la materia: "; getline(cin, m); Alumno.set_materia(m);
+	cout << "Ingrear la calificacion: "; cin >> c; Alumno.set_calificacion(c);
+	system("cls");
+
+	cout << "ALUMNO:" << Alumno.get_nombre() << endl;
+	cout << "EDAD:" << Alumno.get_edad() << endl;
+	cout << "MATERIA:" << Alumno.get_materia() << endl;
+	cout << "CALIFICACION:" << Alumno.get_calificacion() << endl;
+
+	return 0;
+}
