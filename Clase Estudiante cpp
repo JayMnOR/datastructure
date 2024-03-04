@@ -1,0 +1,32 @@
+#include "Estudiante.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+Estudiante::Estudiante(){}
+Estudiante::~Estudiante(){}
+void Estudiante::set_nombre(string n) {
+	nombre = n;}
+void Estudiante::set_edad(int e) {
+	edad = e;
+}
+void Estudiante::set_materia(string m) {
+	materia = m;
+}
+void Estudiante::set_calificacion(float c) {
+	calificacion = c;
+}
+string Estudiante::get_nombre() {
+	return nombre;
+}
+int Estudiante::get_edad() {
+	return edad;
+}
+string Estudiante::get_materia() {
+	return materia;
+}
+float Estudiante::get_calificacion() {
+	return calificacion;
+
+}
