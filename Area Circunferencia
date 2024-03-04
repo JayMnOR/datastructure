@@ -1,0 +1,9 @@
+class figurageome:
+    def __init__(self, circulo):
+        self.arriba=circulo*circulo*3.14159
+        self.gravedad=2*circulo*3.14159
+land=float(input("Ingrese el valor del lado: "))
+perro=figurageome(land)
+
+print("Area = ", perro.arriba, " unidades cuadradas")
+print("Perimetro = ", perro.gravedad, " unidades")
