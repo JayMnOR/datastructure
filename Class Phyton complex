@@ -1,0 +1,6 @@
+class Complex:
+    def __init__(self, realp, imap):
+        self.r = realp
+        self.i = imap
+x = Complex(3.0, -4.5)
+print(x.r, " + " x.i, " i ")
