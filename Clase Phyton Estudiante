@@ -1,0 +1,10 @@
+class Estudiante:
+    def __init__(self, nombre, edad, materia, calificacion):
+        self.nombre = nombre
+        self.edad = edad
+        self.materia = materia
+        self.calificacion = calificacion
+    def definir_materia(self, nueva_materia):
+        self.materia = nueva_materia
+    def definir_calificacion(self, nueva_calificacion):
+        self.calfiicacion=nueva_calificacion
