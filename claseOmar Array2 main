@@ -1,0 +1,34 @@
+#include<iostream>
+#include "Array2.h"
+#define MAX 100
+using namespace std;
+
+int main() {
+	int n;
+	cout << "Ingrese el tamano del que quiere sus 2 vectores: ";
+	cin >> n;
+
+	int X[MAX]; int Y[MAX];
+
+	Array2 arrayA(n);
+
+	system("cls");
+	cout << "VECTOR 1: "<<endl;
+	arrayA.cargarArray(X);
+	system("pause"); system("cls");
+	cout << "VECTOR 2: " << endl;
+	arrayA.cargarArray(Y);
+	system("pause"); system("cls");
+
+	cout << "ARRAY NUMERO 1: " << endl;
+	arrayA.mostrarArray(X);
+	cout << endl<<"ARRAY NUMERO 2: " << endl;
+	arrayA.mostrarArray(Y);
+
+	cout << "LA SUMA DE AMBOS ARRAYS ES" << endl;
+	arrayA.MostrarSumaArrays(X, Y);
+
+	cout << "El vecotr cuya suma es mayor es:" << endl;
+	cout << arrayA.MostrarSumaMayor(X, Y);
+
+}
