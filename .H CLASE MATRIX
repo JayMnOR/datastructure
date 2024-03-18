@@ -1,0 +1,22 @@
+#include <iostream>
+#define MAX 10
+using namespace std;
+#pragma once
+class matrix
+{
+private:
+	int mat[MAX][MAX];
+	int x;
+	int y;
+public:
+	matrix();
+	~matrix();
+	int getfila();
+	void setfila(int n);
+	int getcol();
+	void setcol(int l);
+	void setmatrix();
+	void showmatrix();
+	float prom();
+	int mayor();
+};
