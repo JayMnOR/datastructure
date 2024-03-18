@@ -1,0 +1,52 @@
+#include "matrix.h"
+#include <iostream>
+using namespace std;
+
+matrix::matrix() {}
+matrix::~matrix() {}
+int matrix::getfila() {
+	return x;
+}
+void matrix::setfila(int n) {
+	x = n;
+}
+int matrix::getcol() {
+	return y;
+}
+void matrix::setcol(int l) {
+	y = l;
+}
+void matrix::setmatrix() {
+	int val;
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			cout << "Ingresar el valor [" << i << "] [" << j << "] :  " << endl; cin >> val;
+			mat[i][j] = val;
+		}
+	}
+}
+void matrix::showmatrix() {
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			cout << mat[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+float matrix::prom() {
+	float val = 0;
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			val += mat[i][j];
+		}
+	}
+	return val / (x * y);
+}
+int matrix::mayor() {
+	int may = mat[0][0];
+	for (int i = 0; i < x; i++)
+		for (int j = 0; j < y; j++)
+			if (mat[i][j] > may)
+				may = mat[i][j];
+	return may;
+}
