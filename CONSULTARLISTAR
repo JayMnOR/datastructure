@@ -1,0 +1,133 @@
+.H
+#ifndef USUARIOS_H
+#define USUARIOS_H
+
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+class Usuario {
+public:
+    int ID;
+    string nombreUsuario;
+    string correo;
+    string contrasena;
+    Usuario* siguiente;
+
+    Usuario(int ID, string nombreUsuario, string correo, string contrasena);
+};
+
+class GestorUsuarios {
+public:
+    GestorUsuarios(const string& nombreArchivo);
+    ~GestorUsuarios();
+    void agregarUsuario(const Usuario& usuario);
+    Usuario* obtenerUsuarioPorID(int ID);
+    void listarUsuarios() const;
+    void guardarUsuarios() const;
+
+private:
+    string nombreArchivo;
+    Usuario* cabeza;
+    void liberarMemoria();
+};
+
+#endif
+
+
+.CPP
+#include "Usuarios.h"
+#include <iostream>
+
+Usuario::Usuario(int ID, string nombreUsuario, string correo, string contrasena)
+    : ID(ID), nombreUsuario(nombreUsuario), correo(correo), contrasena(contrasena), siguiente(nullptr) {}
+
+GestorUsuarios::GestorUsuarios(const string& nombreArchivo) : nombreArchivo(nombreArchivo), cabeza(nullptr) {}
+
+GestorUsuarios::~GestorUsuarios() {
+    liberarMemoria();
+}
+
+void GestorUsuarios::agregarUsuario(const Usuario& usuario) {
+    Usuario* nuevoUsuario = new Usuario(usuario.ID, usuario.nombreUsuario, usuario.correo, usuario.contrasena);
+    if (!cabeza) {
+        cabeza = nuevoUsuario;
+    } else {
+        Usuario* temp = cabeza;
+        while (temp->siguiente) {
+            temp = temp->siguiente;
+        }
+        temp->siguiente = nuevoUsuario;
+    }
+}
+
+Usuario* GestorUsuarios::obtenerUsuarioPorID(int ID) {
+    Usuario* temp = cabeza;
+    while (temp) {
+        if (temp->ID == ID) {
+            return temp;
+        }
+        temp = temp->siguiente;
+    }
+    return nullptr;
+}
+
+void GestorUsuarios::listarUsuarios() const {
+    Usuario* temp = cabeza;
+    while (temp) {
+        cout << "ID: " << temp->ID
+             << ", Nombre de usuario: " << temp->nombreUsuario
+             << ", Correo: " << temp->correo
+             << ", Contraseña: " << temp->contrasena << endl;
+        temp = temp->siguiente;
+    }
+}
+
+void GestorUsuarios::guardarUsuarios() const {
+    ofstream file(nombreArchivo);
+    if (!file.is_open()) {
+        cerr << "No se pudo abrir el archivo." << endl;
+        return;
+    }
+    Usuario* temp = cabeza;
+    while (temp) {
+        file << temp->ID << " " << temp->nombreUsuario << " " << temp->correo << " " << temp->contrasena << "\n";
+        temp = temp->siguiente;
+    }
+    file.close();
+}
+
+void GestorUsuarios::liberarMemoria() {
+    Usuario* temp;
+    while (cabeza) {
+        temp = cabeza;
+        cabeza = cabeza->siguiente;
+        delete temp;
+    }
+}
+
+.MAIN
+#include "Usuarios.h"
+
+int main() {
+    GestorUsuarios gestor("usuarios.txt");
+    gestor.agregarUsuario(Usuario(1, "juan_perez", "juan@example.com", "1234"));
+    gestor.agregarUsuario(Usuario(2, "ana_lopez", "ana@example.com", "abcd"));
+
+    cout << "Lista de todos los usuarios:" << endl;
+    gestor.listarUsuarios();
+
+    cout << "\nObteniendo usuario con ID 1:" << endl;
+    Usuario* usuario = gestor.obtenerUsuarioPorID(1);
+    if (usuario) {
+        cout << "Usuario encontrado - ID: " << usuario->ID
+             << ", Nombre de usuario: " << usuario->nombreUsuario << endl;
+    } else {
+        cout << "Usuario no encontrado." << endl;
+    }
+
+    gestor.guardarUsuarios();
+
+    return 0;
+}
